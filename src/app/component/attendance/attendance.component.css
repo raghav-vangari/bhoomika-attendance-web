@@ -1,0 +1,15 @@
+.green {
+    background-color: green;
+  }
+  
+  .red {
+    background-color: red;
+  }
+
+#attendance-time {
+  width: 100px
+}
+
+#date-pick {
+  width: 200px;
+}

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "attendance-management-sy-7a44b": {
+      "hosting": {
+        "firebase-angular-crud": [
+          "attendance-management-sy-7a44b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "attendance-management-sy-7a44b"
+  }
+}

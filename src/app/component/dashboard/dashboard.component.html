@@ -1,0 +1,80 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <div class="card border-0 shadow p-3">
+                <div class="form-floating mb-3 tetx-center">
+                    <h5 class="text-center text-warning">Add Student</h5>
+                </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="batch" name="batch" [(ngModel)]="batch">
+                        <label for="batch">Batch</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="firstName" name="firstname" [(ngModel)]="first_name">
+                        <label for="firstname">First name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="last_name">
+                        <label for="lastName">Last name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email">
+                        <label for="email">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="mobile" name="mobile" [(ngModel)]="mobile">
+                        <label for="mobile">Mobile</label>
+                    </div>
+                    <button type="button" class="btn btn-outline-success" (click)="addStudent()">Add Student</button>
+            </div>
+        </div>
+        <div class="col-md-8 mt-2">
+            <div>
+                <p>Select a batch</p>
+                <select (change)="getAllStudentsByBatch()" [(ngModel)]="selectedBatch" >
+                    <option *ngFor="let batch of batches" value={{batch.batchNumber}} >{{batch.batchNumber}}
+                    </option>
+                  </select>
+                </div>
+            <h3 class="text-danger">Students List</h3>
+            <div class="card p-3 shadow">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Batch</th>
+                            <th scope="col">First name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Mobile</th>
+                            <th scope="col">Deposit</th>
+                            <th scope="col">Balance</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let studnet of studentsList">
+                            <td >{{studnet.batchNumber}}</td>
+                            <td >{{studnet.firstName}}</td>
+                            <td>{{studnet.lastName}}</td>
+                            <td>{{studnet.email}}</td>
+                            <td>{{studnet.mobile}}</td>
+                            <td>{{studnet.deposit}}</td>
+                            <td>{{studnet.balance}}</td>
+                            <td>
+                                <button class="btn btn-outline-danger"><i class="bi bi-pen"></i></button>
+                            </td>
+                            <td>
+                                <button class="btn btn-outline-danger" (click)="deleteStudent(studnet)"><i class="bi bi-archive"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

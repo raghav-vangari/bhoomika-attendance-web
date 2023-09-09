@@ -1,0 +1,45 @@
+
+<div class="col-md-8 mt-2">
+    <div class="col">
+      <p>Select a batch</p>
+      <select (change)="getAllStudents()" [(ngModel)]="selectedBatch" >
+        <option *ngFor="let batch of batchList" value={{batch.batchNumber}} >{{batch.batchNumber}}</option>
+      </select>
+    </div>
+    <h5 class="text-danger"> Student List</h5>
+    <div class="card p-3 shadow">
+      <mat-form-field appearance="fill" id="date-pick">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="serializedDate" (dateChange)="updateDate($event)">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Attendance</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Attending Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let attendance of attendanceList; let idx=index;" id="{{idx}}"
+                  [style.background-color]="attendance.submitted ? (attendance.status === 'Present' ? 'green' : 'red') : 'white'">
+                    <td ><input type="button"
+                      (click)="changeTableRowColor(idx)"
+                      formControlName="state" value="select"/></td>
+                    <td>{{attendance.studentName}}</td>
+                    <td>{{attendance.status}}</td>
+                    <td><input type="text" class="form-control" id="attendance-time" name="attendance-time" 
+                      (change)="onTimeChange($event, idx)" value="{{attendance.attendingTime}}"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <button type="button" class="btn btn-primary" (click)="addAttendance()">Add Attendance</button>
+        </div>
+    </div>
+</div>
