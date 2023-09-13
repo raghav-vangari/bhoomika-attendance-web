@@ -7,8 +7,8 @@ export const environment = {
     authDomain: 'attendance-management-sy-7a44b.firebaseapp.com',
     messagingSenderId: '776104105095',
   },
-  // bhoomikaService: 'https://bhoomika-webservice-2.onrender.com/'
-  bhoomikaService: 'http://localhost:8080/',
+  bhoomikaService: 'https://bhoomika-webservice-2.onrender.com/'
+  // bhoomikaService: 'http://localhost:8080/',
 
   
 }
