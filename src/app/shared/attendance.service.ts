@@ -5,18 +5,21 @@ import { addDoc, deleteDoc, updateDoc, onSnapshot } from '@firebase/firestore';
 import { Observable } from 'rxjs';
 import { Attendance } from '../model/attendance';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AttendanceService {
 
-  attendanceUrl = 'http://localhost:8080/attendance';
-
+  attendanceUrl = 'http://localhost:8080/attendance/';
+  bhoomikaServiceUrl = `${environment.bhoomikaService}`;
   constructor(private afs: Firestore, private http: HttpClient) { }
 
   addAttendance(attendanceList: Attendance[], batchNum: number) {
-    return this.http.post(this.attendanceUrl + '/batch/' + batchNum, attendanceList);
+    
+    // return this.http.post(this.attendanceUrl + 'batch/' + batchNum, attendanceList);
+    return this.http.post(this.bhoomikaServiceUrl + 'attendance/batch/' + batchNum, attendanceList);
   }
 
   //get all attendance
@@ -40,9 +43,9 @@ export class AttendanceService {
     // return updateDoc(attendanceRef, attendances);
   }
 
-  getCurrentAttendance(currentDate: string):Observable<Attendance[]> {
+  getCurrentAttendance(currentDate: string, batch: number):Observable<Attendance[]> {
     console.log('in getCurrentAttendance()')
-    return this.http.get<Attendance[]>(this.attendanceUrl + '/' +currentDate);
+    return this.http.get<Attendance[]>(this.bhoomikaServiceUrl + 'attendance/' + currentDate + '/batch/' + batch);
     // let q = query(collection(this.afs, 'Attendance'), where("attendanceDate", "==", "06/03/2023"))
 
     // onSnapshot(q, (snapshot) => {

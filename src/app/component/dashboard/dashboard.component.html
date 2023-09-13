@@ -11,6 +11,10 @@
                         <label for="batch">Batch</label>
                     </div>
                     <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="batchId" name="batchId" [(ngModel)]="batchId">
+                        <label for="batch">Batch ID</label>
+                    </div>
+                    <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="firstName" name="firstname" [(ngModel)]="first_name">
                         <label for="firstname">First name</label>
                     </div>
@@ -43,7 +47,7 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th scope="col">Batch</th>
+                            <th scope="col">ID</th>
                             <th scope="col">First name</th>
                             <th scope="col">Last name</th>
                             <th scope="col">Email</th>
@@ -56,7 +60,7 @@
                         </thead>
                         <tbody>
                           <tr *ngFor="let studnet of studentsList">
-                            <td >{{studnet.batchNumber}}</td>
+                            <td >{{studnet.id}}</td>
                             <td >{{studnet.firstName}}</td>
                             <td>{{studnet.lastName}}</td>
                             <td>{{studnet.email}}</td>

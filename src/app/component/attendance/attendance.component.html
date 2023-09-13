@@ -27,7 +27,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let attendance of attendanceList; let idx=index;" id="{{idx}}"
+                  <tr *ngFor="let attendance of toBeAddedAttendanceList; let idx=index;" id="{{idx}}"
                   [style.background-color]="attendance.submitted ? (attendance.status === 'Present' ? 'green' : 'red') : 'white'">
                     <td ><input type="button"
                       (click)="changeTableRowColor(idx)"
@@ -41,5 +41,27 @@
               </table>
               <button type="button" class="btn btn-primary" (click)="addAttendance()">Add Attendance</button>
         </div>
+
+        <h2>Added List</h2>
+        <div class="card-body">
+          <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Attending Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let attendance of addedAttendanceList; let idx=index;" id="{{idx}}"
+                [style.background-color]="attendance.status === 'Present' ? 'green' : 'red'">
+                  <td>{{attendance.studentName}}</td>
+                  <td>{{attendance.status}}</td>
+                  <td><input type="text" class="form-control" id="attendance-time" name="attendance-time" 
+                     value="{{attendance.attendingTime}}" disabled></td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
     </div>
 </div>

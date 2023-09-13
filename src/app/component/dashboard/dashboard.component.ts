@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   batches: Batch[] = [];
   selectedBatch: number = 0;
   studentObj: Student = {
-    id: '',
+    id: 0,
     firstName: '',
     lastName: '',
     email: '',
@@ -29,7 +29,8 @@ export class DashboardComponent implements OnInit {
   last_name: string = '';
   email: string = '';
   mobile: string = '';
-  batch: number = 0; 
+  batch: number = 0;
+  batchId: number = 0;
 
   noOfStudents = 0;
 
@@ -83,7 +84,7 @@ export class DashboardComponent implements OnInit {
   }
 
   addStudent() {
-    if (this.first_name == '' || this.last_name == '' || this.mobile == '' || this.email == '' || this.batch < 1) {
+    if (this.first_name == '' || this.mobile == '' || this.email == '' || this.batch < 1 || this.batchId < 1) {
       alert('Fill all input fields');
       return;
     }
@@ -94,6 +95,7 @@ export class DashboardComponent implements OnInit {
     this.studentObj.lastName = this.last_name;
     this.studentObj.mobile = this.mobile;
     this.studentObj.batchNumber = this.batch;
+    this.studentObj.id = this.batchId;
 
     this.data.addStudent(this.studentObj).subscribe(res => {
       console.log('Student added successfully!');

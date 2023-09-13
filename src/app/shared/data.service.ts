@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Batch } from '../model/batch';
 import { Student } from '../model/student';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  studentsUrl = 'http://localhost:8080/students';
-  batchUrl = 'http://localhost:8080/batches';
+  bhoomikaServiceUrl = `${environment.bhoomikaService}`;
+  // studentsUrl = 'http://localhost:8080/students';
+  // batchUrl = 'http://localhost:8080/batches';
+  studentsUrl = this.bhoomikaServiceUrl + 'students';
+  batchUrl = this.bhoomikaServiceUrl + 'batches';
 
   constructor(private http: HttpClient) { }
 

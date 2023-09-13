@@ -1,11 +1,12 @@
 export interface Attendance {
     id?: string,
     attendanceDate: string,
-    studentId: string,
+    studentId: number,
     studentName: string,
     status: string,
     toggle?: boolean,
     attendingTime?: string,
     submitted?: boolean,
-    toSubmit?: boolean
+    toSubmit?: boolean,
+    batch?: number
 }
