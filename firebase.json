@@ -1,7 +1,7 @@
 {
   "hosting": {
     "target": "firebase-angular-crud",
-    "public": "dist/firebase-angular-crud",
+    "public": "src/dist/firebase-angular-crud",
     "ignore": [
       "**/.*"
     ],
